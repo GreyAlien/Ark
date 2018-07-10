@@ -1,4 +1,4 @@
-# ARK: Survival Evolved - Docker
+.# ARK: Survival Evolved - Docker
 
 Docker build for managing an ARK: Survival Evolved server.
 
