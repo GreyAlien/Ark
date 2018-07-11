@@ -6,7 +6,7 @@ MAINTAINER bigdaddymccarron
 
 # Var for first config
 # Time Zone
-ENV TZ=EST
+ENV TZ=Europe/Dublin
 # Server Name
 ENV SESSIONNAME "Ark Docker"
 # Map name
@@ -41,8 +41,11 @@ ENV GID 281
 
 # Install dependencies 
 COPY sources.list /etc/apt/sources.list
-RUN apt-get update &&\ 
-    apt-get install -y curl lib32gcc1 lsof git vim tzdata sudo cron
+RUN \
+export DEBIAN_FRONTEND=noninteractive && \
+export DEBCONF_NONINTERACTIVE_SEEN=true && \
+apt-get update &&\ 
+apt-get install -y curl lib32gcc1 lsof git vim tzdata sudo cron
 
 # Enable passwordless sudo for users under the "sudo" group
 COPY sudoers /etc/sudoers
